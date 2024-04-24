@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios"; // Import Axios for HTTP requests
 
-const LoginPage = () => {
+const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState('');
@@ -25,6 +25,7 @@ const LoginPage = () => {
 
   const handlePasswordChange = (e) => {
     const enteredPassword = e.target.value;
+    const enteredPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@.#$!%*?&^])[A-Za-z\d@.#$!%*?&]{8,15}$/;
     setPassword(enteredPassword);
   };
 
@@ -75,7 +76,7 @@ const LoginPage = () => {
         {loginSuccess && (
           <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
             <strong className="font-bold">Login successful!</strong>
-            <pre className="mt-2">{JSON.stringify(userData, null, 2)}</pre>
+            {/* <pre className="mt-2">{JSON.stringify(userData, null, 2)}</pre> */}
           </div>
         )}
         <button
@@ -94,4 +95,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default Login;
